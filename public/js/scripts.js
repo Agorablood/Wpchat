@@ -15,32 +15,19 @@ function enviarMensaje() {
 
 function mostrarMensajes() {
     $.ajax({
-        url: baseUrl + "/obtenerMensajes",
-        method: "get",
-        success: function (respuesta) {
-            alert("prueba");
-            // console.log(respuesta);
+        url: baseUrl + '/obtenerMensajes',
+        method: 'get',
+        success: function(respuesta) {
             var mensajes = JSON.parse(respuesta);
+            $('#contenedorMensajes').html('');
 
-            $("#contenedorMensajes").html("");
-
-            for (var i = 0; i < mensajes.length(); i++) {
-                var txt = mensajes[i]["usuario"] + ":" + mensajes[1];
-                $("contenedorMensajes").append(txt);
-                // console.log(mensajes);
-                // $('#textoUsuario').empty();
-
-                // // Recorremos los mensajes y los agregamos al HTML
-                // mensajes.forEach(function(mensaje) {
-                //     var elementoMensaje = $('<div>').text(mensaje);
-                //     $('#textoUsuario').append(elementoMensaje);
-                // });
+            for(var i=0; i<mensajes.length; i++) {
+                var txt = mensajes[i]['usuario'] + ": " + mensajes[i]['texto'] + '<br>';
+                $('#contenedorMensajes').append(txt);
             }
-        },
+
+        }
     });
 }
 
-    // setInterval(() => {
-    //     mostrarMensajes();
-    // }, 5000);
 
