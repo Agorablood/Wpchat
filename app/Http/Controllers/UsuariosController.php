@@ -11,14 +11,19 @@ class UsuariosController extends Controller
     public function acceso() {
 
         $session = Session();
-        if ($session->has('usuario')) {
+
+        // if($session->get('nombre') != null) {
+        if($session->has('nombre')) {
+         
             return  view('templates/header').
                     view('listadoMensajes').
                     view('templates/footer');
-        }
+        } 
+
         return  view('templates/header').
-                    view('acceso').
-                    view('templates/footer');
+                view('acceso').
+                view('templates/footer');
+        
     }
 
     public function registrarSesion(Request $request) {
