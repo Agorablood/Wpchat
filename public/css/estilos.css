@@ -1,0 +1,14 @@
+body{
+    text-align: center;
+}
+#footer{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%; /* O ajusta según sea necesario */
+    height: 20px; /* Ajusta según sea necesario */
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    z-index: 1000; /* Ajusta según sea necesario */
+}
