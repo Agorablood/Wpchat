@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/scripts.js') }}?v={{ rand(0,10000) }}"></script>
+    <link rel="stylesheet" href="{{url('css/estilos.css')}}">
 
     <script>
         var baseUrl = '{{ url("") }}';
