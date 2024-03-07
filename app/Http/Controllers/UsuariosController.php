@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\Auth;
 
 class UsuariosController extends Controller
 {
@@ -39,5 +40,9 @@ class UsuariosController extends Controller
                 view('listadoMensajes').
                 view('templates/footer');
 
+    }
+    public function logout(Request $request){
+        Session::flush();
+        return redirect('/');
     }
 }

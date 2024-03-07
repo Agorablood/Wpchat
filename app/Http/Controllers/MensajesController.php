@@ -43,9 +43,10 @@ class MensajesController extends Controller
         echo 'Mensaje enviado y guardado';
     }
 
-    public function obtenerMensajes()
+    public function obtenerMensajes(Request $request)
     {
-        $mensajes = DB::select('SELECT * FROM mensajes');
+        $id = $request->get('ultimoid');
+        $mensajes = DB::select('SELECT * FROM mensajes WHERE id > '.$id.' ORDER BY id DESC ;');
         $mensajesJson = json_encode($mensajes);
         echo $mensajesJson;
     }

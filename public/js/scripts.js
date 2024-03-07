@@ -1,5 +1,7 @@
 //funcion para mostrar los mensajes
+var ultimoid = 0;
 function enviarMensaje() {
+    $('#contenedorMensajes').empty();
     var texto = $("#textoUsuario").val();
 
     $.ajax({
@@ -14,20 +16,46 @@ function enviarMensaje() {
 }
 
 function mostrarMensajes() {
+    $('#contenedorMensajes').empty();
     $.ajax({
-        url: baseUrl + '/obtenerMensajes',
-        method: 'get',
-        success: function(respuesta) {
+        url: baseUrl + "/obtenerMensajes",
+        method: "get",
+        data: { ultimoid: ultimoid },
+        success: function (respuesta) {
             var mensajes = JSON.parse(respuesta);
-            $('#contenedorMensajes').html('');
+            // $('#contenedorMensajes').html('');
 
-            for(var i=0; i<mensajes.length; i++) {
-                var txt = mensajes[i]['usuario'] + ": " + mensajes[i]['texto'] + '<br>';
-                $('#contenedorMensajes').append(txt);
+            for (var i = 0; i < mensajes.length; i++) {
+                var txt =
+                    mensajes[i]["usuario"] +
+                    ": " +
+                    mensajes[i]["texto"] +
+                    "<br>";
+                $("#contenedorMensajes").append(txt);
+                ultimoid = mensajes[i]["id"];
             }
-
         }
     });
 }
+$(document).ready(function(){
+    $('#contenedorMensajes').empty();
+$.ajax({
+    url: baseUrl + "/obtenerMensajes",
+    method: "get",
+    data: { ultimoid: ultimoid },
+    success: function (respuesta) {
+        var mensajes = JSON.parse(respuesta);
+        // $('#contenedorMensajes').html('');
 
-
+        for (var i = 0; i < mensajes.length; i++) {
+            var txt =
+                mensajes[i]["usuario"] +
+                ": " +
+                mensajes[i]["texto"] +
+                "<br>";
+            $("#contenedorMensajes").append(txt);
+            ultimoid = mensajes[i]["id"];
+        }
+    }
+});
+})

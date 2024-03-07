@@ -1,7 +1,10 @@
-body{
+body {
     text-align: center;
+    background-image: url('https://images7.alphacoders.com/135/thumb-1920-1351186.png');
+    color: white;
 }
-#footer{
+
+.footer{
     position: fixed;
     bottom: 0;
     right: 0;
@@ -10,5 +13,16 @@ body{
     background-color: #333;
     color: #fff;
     text-align: center;
-    z-index: 1000; /* Ajusta según sea necesario */
+    /* z-index: -1; Ajusta según sea necesario */
+}
+.mensaje{
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    
+}
+.mensaje, input{
+    width: 80%;
+    
 }
